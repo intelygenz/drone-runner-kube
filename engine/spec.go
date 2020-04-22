@@ -75,6 +75,7 @@ type (
 		EmptyDir    *VolumeEmptyDir    `json:"temp,omitempty"`
 		HostPath    *VolumeHostPath    `json:"host,omitempty"`
 		DownwardAPI *VolumeDownwardAPI `json:"downward_api,omitempty"`
+		Claim       *VolumeClaim       `json:"claim,omitempty"`
 	}
 
 	// VolumeMount describes a mounting of a Volume
@@ -112,6 +113,14 @@ type (
 	VolumeDownwardAPIItem struct {
 		Path      string `json:"path,omitempty"`
 		FieldPath string `json:"field_path,omitempty"`
+	}
+
+	// VolumeClaim ...
+	VolumeClaim struct {
+		ID        string `json:"id,omitempty"`
+		Name      string `json:"name,omitempty"`
+		ClaimName string `json:"claimName,omitempty"`
+		ReadOnly  bool   `json:"readOnly,omitempty"`
 	}
 
 	// Resources describes the compute resource requirements.

@@ -522,6 +522,13 @@ func (c *Compiler) Compile(ctx context.Context, args Args) *engine.Spec {
 				Name: v.Name,
 				Path: v.HostPath.Path,
 			}
+		} else if v.Claim != nil {
+			src.Claim = &engine.VolumeClaim{
+				ID:        id,
+				Name:      v.Name,
+				ClaimName: v.Claim.ClaimName,
+				ReadOnly:  v.Claim.ReadOnly,
+			}
 		} else {
 			continue
 		}
